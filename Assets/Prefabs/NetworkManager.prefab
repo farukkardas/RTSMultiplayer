@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6799714730400331627}
   - component: {fileID: 6799714730400331624}
   - component: {fileID: 6799714730400331626}
-  - component: {fileID: 6799714730400331621}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -49,9 +48,9 @@ MonoBehaviour:
   PersistNetworkManagerToOfflineScene: 0
   runInBackground: 1
   autoStartServerBuild: 1
-  serverTickRate: 30
+  serverTickRate: 144
   offlineScene: Assets/Scenes/Scene_Menu.unity
-  onlineScene: Assets/Scenes/Scene_Map_01.unity
+  onlineScene: 
   transport: {fileID: 6799714730400331626}
   networkAddress: localhost
   maxConnections: 100
@@ -62,13 +61,13 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 1
   spawnPrefabs:
-  - {fileID: 4557238735026958780, guid: bd8b6d7b5410348409aed5d6c398795d, type: 3}
   - {fileID: 506098795319230288, guid: ac97254159c072543a72f92db6138740, type: 3}
-  - {fileID: 8529367219272093053, guid: e847e5035e6e5d448af31f937940f18c, type: 3}
   - {fileID: 5892336665527094093, guid: 744b9b6a33d6934439876712199f733f, type: 3}
-  - {fileID: 506098795319230288, guid: b681b291da2b6434a8bc62b472ecda3a, type: 3}
-  - {fileID: 506098795319230288, guid: a6a70f877008e784fb98b8d8137344a9, type: 3}
-  unitSpawnerPrefab: {fileID: 506098795319230288, guid: ac97254159c072543a72f92db6138740, type: 3}
+  - {fileID: 856879590324776197, guid: aa8f3a619fff2d644b85663c9dc5ad51, type: 3}
+  - {fileID: 8529367219272093053, guid: e847e5035e6e5d448af31f937940f18c, type: 3}
+  - {fileID: 8020926893330350852, guid: f64d29525a3b6e149a7ce677d5b0a1f1, type: 3}
+  - {fileID: 5229998706258530711, guid: 8ed4609c60650af4c90b2a1fe84a35ec, type: 3}
+  unitBasePrefab: {fileID: 506098795319230288, guid: ac97254159c072543a72f92db6138740, type: 3}
   gameOverHandlerPrefab: {fileID: 3137511680554532016, guid: 744b9b6a33d6934439876712199f733f, type: 3}
 --- !u!114 &6799714730400331626
 MonoBehaviour:
@@ -93,18 +92,3 @@ MonoBehaviour:
   debugLog: 0
   statisticsGUI: 0
   statisticsLog: 0
---- !u!114 &6799714730400331621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6799714730400331620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showGUI: 1
-  offsetX: 0
-  offsetY: 0

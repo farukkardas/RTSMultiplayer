@@ -26,6 +26,8 @@ namespace Controller
             _mainCamera = UnityEngine.Camera.main;
             UnitSelection.AuthorityOnUnitDeSpawned += AuthorityHandleUnitDeSpawned;
             GameOverHandler.ClientOnGameOver += ClientHandleGameOver;
+            _player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
+
         }
 
         private void OnDestroy()
@@ -45,13 +47,9 @@ namespace Controller
             selectedUnits.Remove(unit);
         }
 
+      
         private void Update()
         {
-            if (_player == null)
-            {
-                _player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
-            }
-            
             if (Mouse.current.leftButton.wasPressedThisFrame)
             {
                 StartSelectionArea();

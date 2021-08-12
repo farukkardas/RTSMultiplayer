@@ -12,13 +12,14 @@ namespace Currency
         private bool _isPlayerNull;
         private RTSPlayer _rtsPlayer;
 
+        private void Start()
+        {
+            _player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
+        }
 
         private void Update()
         {
-            if (_player == null)
-            {
-                _player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
-            }
+          
 
             if (_player != null)
             {
@@ -34,7 +35,7 @@ namespace Currency
 
         private void ClientHandleResourcesUpdated(int amount)
         {
-            goldAmount.text = $"Resources {amount}";
+            goldAmount.text = $"Gold: {amount}";
         }
     }
 }

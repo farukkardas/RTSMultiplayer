@@ -16,33 +16,33 @@ namespace Buildings
         [SerializeField] private Image iconImage = null;
         [SerializeField] private TMP_Text priceText = null;
         [SerializeField] private LayerMask floorMask = new LayerMask();
+
+
+        private BoxCollider _buildingCollider;
+        private Camera _mainCamera;
+        private RTSPlayer _player;
+        private GameObject _buildingPreviewInstance;
+        private Renderer _buildingRendererInstance;
+
         
-        
-        private BoxCollider buildingCollider;
-        private UnityEngine.Camera mainCamera;
-        private RTSPlayer player;
-        private GameObject buildingPreviewInstance;
-        private Renderer buildingRendererInstance;
-        //private IPointerUpHandler _pointerUpHandlerImplementation;
+
 
         private void Start()
         {
-            mainCamera = UnityEngine.Camera.main;
+            _mainCamera = Camera.main;
 
             iconImage.sprite = building.GetIcon();
             priceText.text = building.GetPrice().ToString();
+            _buildingCollider = building.GetComponent<BoxCollider>();
+            _player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
 
-            buildingCollider = building.GetComponent<BoxCollider>();
         }
 
         private void Update()
         {
-            if (player == null)
-            {
-                player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
-            }
+          
 
-            if (buildingPreviewInstance == null)
+            if (_buildingPreviewInstance == null)
             {
                 return;
             }
@@ -58,54 +58,54 @@ namespace Buildings
                 return;
             }
 
-            if (player.GetResources() < building.GetPrice())
+            if (_player.GetResources() < building.GetPrice())
             {
                 return;
             }
 
-            buildingPreviewInstance = Instantiate(building.GetBuildingPreview());
-            buildingRendererInstance = buildingPreviewInstance.GetComponentInChildren<Renderer>();
-            buildingPreviewInstance.SetActive(false);
+            _buildingPreviewInstance = Instantiate(building.GetBuildingPreview());
+            _buildingRendererInstance = _buildingPreviewInstance.GetComponentInChildren<Renderer>();
+            _buildingPreviewInstance.SetActive(false);
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            if (buildingPreviewInstance == null)
+            if (_buildingPreviewInstance == null)
             {
                 return;
             }
 
-            Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+            Ray ray = _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, floorMask))
             {
-                player.CmdTryPlaceBuilding(building.GetId(), hit.point);
+                _player.CmdTryPlaceBuilding(building.GetId(), hit.point);
             }
 
 
-            Destroy(buildingPreviewInstance);
+            Destroy(_buildingPreviewInstance);
         }
 
         private void UpdateBuildingPreview()
         {
-            Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+            Ray ray = _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
             if (!Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, floorMask))
             {
                 return;
             }
 
-            buildingPreviewInstance.transform.position = hit.point;
+            _buildingPreviewInstance.transform.position = hit.point;
 
-            if (!buildingPreviewInstance.activeSelf)
+            if (!_buildingPreviewInstance.activeSelf)
             {
-                buildingPreviewInstance.SetActive(true);
+                _buildingPreviewInstance.SetActive(true);
             }
 
-            
-            Color color = player.CanPlaceBuilding(buildingCollider,hit.point) ? Color.green : Color.red;
-            
-            buildingRendererInstance.material.SetColor("_BaseColor",color);
+
+            Color color = _player.CanPlaceBuilding(_buildingCollider, hit.point) ? Color.green : Color.red;
+
+            _buildingRendererInstance.material.SetColor("_BaseColor", color);
         }
     }
 }

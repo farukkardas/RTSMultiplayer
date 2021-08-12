@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637636232561296268
-    m_Hash: 3598252815
+      ticks: 637641995677225061
+    m_Hash: 805390379
   m_LockFileStatus:
     m_FilePath: D:/Development/UnityC#/RTSMultiplayer/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637636232608261001
-    m_Hash: 4259953373
+      ticks: 637641995913950876
+    m_Hash: 1740708003
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -148,7 +148,6 @@ m_PackageAssets:
         - 7.0.0-pre.2
         - 7.0.0-pre.3
         compatible:
-        - 5.1.2
         - 5.1.3
         verified: 5.1.3
       dependencies:
@@ -258,12 +257,12 @@ m_PackageAssets:
         url: 
         revision: 
         path: 
-    - packageId: com.unity.ads@3.4.7
+    - packageId: com.unity.ads@3.7.1
       testable: 0
       isDirectDependency: 1
-      version: 3.4.7
+      version: 3.7.1
       source: 1
-      resolvedPath: D:\Development\UnityC#\RTSMultiplayer\Library\PackageCache\com.unity.ads@3.4.7
+      resolvedPath: D:\Development\UnityC#\RTSMultiplayer\Library\PackageCache\com.unity.ads@3.7.1
       assetPath: Packages/com.unity.ads
       name: com.unity.ads
       displayName: Advertisement
@@ -388,20 +387,20 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637274155900000000
+      datePublishedTicks: 637533483430000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ads.git
-        revision: a22f94ceb31b137fe466330fc060b947adb67fba
+        revision: 95ec369d16df431f8c9ebbb83c0f65dc4471f07e
         path: 
-    - packageId: com.unity.analytics@3.3.5
+    - packageId: com.unity.analytics@3.5.3
       testable: 0
       isDirectDependency: 1
-      version: 3.3.5
+      version: 3.5.3
       source: 1
-      resolvedPath: D:\Development\UnityC#\RTSMultiplayer\Library\PackageCache\com.unity.analytics@3.3.5
+      resolvedPath: D:\Development\UnityC#\RTSMultiplayer\Library\PackageCache\com.unity.analytics@3.5.3
       assetPath: Packages/com.unity.analytics
       name: com.unity.analytics
       displayName: Analytics Library
@@ -514,13 +513,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637146252790000000
+      datePublishedTicks: 637381916200000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: git@github.cds.internal.unity3d.com:unity/com.unity.analytics.git
-        revision: 98d7da077d4e205d8500771aa31648bdedd0f9e2
+        url: https://github.cds.internal.unity3d.com/unity/com.unity.analytics.git
+        revision: 02d361e53eda59ceb7d02ba9bd15ff55a093ad83
         path: 
     - packageId: com.unity.cinemachine@2.6.5
       testable: 0
@@ -659,12 +658,12 @@ m_PackageAssets:
         url: git+https://github.com/Unity-Technologies/com.unity.cinemachine.git
         revision: c12b97ec35ab5091c685e729b76980a69a6d39a1
         path: 
-    - packageId: com.unity.collab-proxy@1.5.7
+    - packageId: com.unity.collab-proxy@1.7.1
       testable: 0
       isDirectDependency: 1
-      version: 1.5.7
+      version: 1.7.1
       source: 1
-      resolvedPath: D:\Development\UnityC#\RTSMultiplayer\Library\PackageCache\com.unity.collab-proxy@1.5.7
+      resolvedPath: D:\Development\UnityC#\RTSMultiplayer\Library\PackageCache\com.unity.collab-proxy@1.7.1
       assetPath: Packages/com.unity.collab-proxy
       name: com.unity.collab-proxy
       displayName: Version Control
@@ -714,8 +713,7 @@ m_PackageAssets:
         - 2.1.0-preview.5
         - 2.1.0-preview.6
         compatible:
-        - 1.5.7
-        - 1.6.0
+        - 1.7.1
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -726,7 +724,7 @@ m_PackageAssets:
         - 2.1.0-preview.3
         - 2.1.0-preview.5
         - 2.1.0-preview.6
-        verified: 1.5.7
+        verified: 1.7.1
       dependencies:
       - name: com.unity.nuget.newtonsoft-json
         version: 2.0.0
@@ -734,16 +732,19 @@ m_PackageAssets:
       - name: com.unity.nuget.newtonsoft-json
         version: 2.0.0
       keywords:
-      - vsc
-      - version
-      - control
-      - collab
-      - collaboration
-      - collaborate
-      - teams
-      - team
-      - cloud
       - backup
+      - cloud
+      - collab
+      - collaborate
+      - collaboration
+      - control
+      - plastic
+      - plasticscm
+      - source
+      - team
+      - teams
+      - version
+      - vcs
       registry:
         id: main
         name: 
@@ -756,13 +757,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637551413290000000
+      datePublishedTicks: 637616921650000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
-        revision: f079d307344f568804d3ea6d781013135e614e45
+        revision: 30ef59f552633de9ff0401db4e73ac89982d4ac0
         path: 
     - packageId: com.unity.ide.rider@2.0.7
       testable: 0
@@ -843,7 +844,7 @@ m_PackageAssets:
         version: 1.1.1
       resolvedDependencies:
       - name: com.unity.test-framework
-        version: 1.1.24
+        version: 1.1.27
       - name: com.unity.ext.nunit
         version: 1.0.6
       - name: com.unity.modules.imgui
@@ -871,12 +872,12 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
         revision: abb44f053e9a41d2e00e149e32a19bcec76e98b4
         path: 
-    - packageId: com.unity.ide.visualstudio@2.0.8
+    - packageId: com.unity.ide.visualstudio@2.0.9
       testable: 0
       isDirectDependency: 1
-      version: 2.0.8
+      version: 2.0.9
       source: 1
-      resolvedPath: D:\Development\UnityC#\RTSMultiplayer\Library\PackageCache\com.unity.ide.visualstudio@2.0.8
+      resolvedPath: D:\Development\UnityC#\RTSMultiplayer\Library\PackageCache\com.unity.ide.visualstudio@2.0.9
       assetPath: Packages/com.unity.ide.visualstudio
       name: com.unity.ide.visualstudio
       displayName: Visual Studio Editor
@@ -930,7 +931,7 @@ m_PackageAssets:
         version: 1.1.9
       resolvedDependencies:
       - name: com.unity.test-framework
-        version: 1.1.24
+        version: 1.1.27
       - name: com.unity.ext.nunit
         version: 1.0.6
       - name: com.unity.modules.imgui
@@ -950,13 +951,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637562620210000000
+      datePublishedTicks: 637580705480000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.visualstudio.git
-        revision: 5cdf5d932e6ecbbd83bbe6a40eec2a94b4979501
+        revision: c7cd4c6319806423b3d918b3e9599244e3993d41
         path: 
     - packageId: com.unity.ide.vscode@1.2.3
       testable: 0
@@ -1439,12 +1440,12 @@ m_PackageAssets:
         url: git+https://github.com/Unity-Technologies/com.unity.progrids.git
         revision: 381f2b0b5dda11525d53e2c608284a3f68d1beff
         path: 
-    - packageId: com.unity.purchasing@2.0.6
+    - packageId: com.unity.purchasing@3.2.2
       testable: 0
       isDirectDependency: 1
-      version: 2.0.6
+      version: 3.2.2
       source: 1
-      resolvedPath: D:\Development\UnityC#\RTSMultiplayer\Library\PackageCache\com.unity.purchasing@2.0.6
+      resolvedPath: D:\Development\UnityC#\RTSMultiplayer\Library\PackageCache\com.unity.purchasing@3.2.2
       assetPath: Packages/com.unity.purchasing
       name: com.unity.purchasing
       displayName: In App Purchasing
@@ -1454,28 +1455,26 @@ m_PackageAssets:
         url: 
       category: 
       type: 
-      description: 'Unity IAP supports the iOS, Mac, tvOS, Google Play, Facebook
-        Gameroom, Windows, Amazon, Samsung Galaxy, Tizen, Cloud Moolah MOO, Xiaomi
-        Mi Game Pay App Stores.
-
-
-        With Unity IAP, setting up in-app purchases
-        for your game across multiple app stores has never been easier.
-
-
-        Use
-        one common API to access all stores for free. With just a few lines of code,
-        you can fully understand and optimize your in-game economy.
-
-
-        Unity
-        IAP automatically couples with Unity Analytics enabling you to monitor and
-        act on trends in your revenue and purchase data across multiple platforms.
-
-
-        Includes
-        client-side receipt validation for Apple, Google Play, and Xiaomi Mi Game
-        Pay.'
+      description: "IMPORTANT UPGRADE NOTES:\n\nIf updating from Unity IAP (com.unity.purchasing
+        + the Asset Store plugin) versions 2.x to version 3.x, complete the following
+        actions in order to resolve compilation errors:\n 1. Move IAPProductCatalog.json
+        and BillingMode.json\n\tFROM: Assets/Plugins/UnityPurchasing/Resources/\n\tTO:
+        Assets/Resources/.\n 2. Move AppleTangle.cs and GooglePlayTangle.cs\n\tFROM:
+        Assets/Plugins/UnityPurchasing/generated\n\tTO: Assets/Scripts/UnityPurchasing/generated.\n
+        3. Remove all remaining Asset Store plugin folders and files in Assets/Plugins/UnityPurchasing
+        from your project.\n\nPACKAGE DESCRIPTION:\n\nWith Unity IAP, setting up
+        in-app purchases for your game across multiple app stores has never been
+        easier.\n\nThis package provides:\n\n \u25AA One common API to access all
+        stores for free so you can fully understand and optimize your in-game economy\n
+        \u25AA Automatic coupling with Unity Analytics to enable monitoring and decision-making
+        based on trends in your revenue and purchase data across multiple platforms\n
+        \u25AA Support for iOS, Mac, tvOS, Google Play, Windows, Amazon, and Samsung
+        Galaxy app stores(*). (*) NOTE Samsung Galaxy is obsolete and will be removed
+        in v4. Please use Unity Distribution Platform for Samsung Galaxy Apps support.\n
+        \u25AA Support to work with the Unity Distribution Portal to synchronize
+        catalogs and transactions with other app stores\n \u25AA Client-side receipt
+        validation for Apple App Store and Google Play\n\nAfter installing this package,
+        open the Services Window to enable In-App Purchasing to use these features."
       status: 4
       errors: []
       versions:
@@ -1558,8 +1557,32 @@ m_PackageAssets:
         - 3.2.3
         - 4.0.0
         verified: 3.2.3
-      dependencies: []
-      resolvedDependencies: []
+      dependencies:
+      - name: com.unity.ugui
+        version: 1.0.0
+      - name: com.unity.modules.unityanalytics
+        version: 1.0.0
+      - name: com.unity.modules.unitywebrequest
+        version: 1.0.0
+      - name: com.unity.modules.jsonserialize
+        version: 1.0.0
+      - name: com.unity.modules.androidjni
+        version: 1.0.0
+      resolvedDependencies:
+      - name: com.unity.ugui
+        version: 1.0.0
+      - name: com.unity.modules.ui
+        version: 1.0.0
+      - name: com.unity.modules.imgui
+        version: 1.0.0
+      - name: com.unity.modules.unityanalytics
+        version: 1.0.0
+      - name: com.unity.modules.unitywebrequest
+        version: 1.0.0
+      - name: com.unity.modules.jsonserialize
+        version: 1.0.0
+      - name: com.unity.modules.androidjni
+        version: 1.0.0
       keywords:
       - purchasing
       - iap
@@ -1572,17 +1595,17 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 636898903830000000
+      datePublishedTicks: 637584231740000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: https://gitlab.cds.internal.unity3d.com/upm-packages/purchasing/com.unity.purchasing
-        revision: 37674e38ef7548642e33bc97797a71b5eadbecac
+        url: https://github.cds.internal.unity3d.com/unity/com.unity.purchasing.git
+        revision: 6ad60ad670b28d3a131388481318ce0d0ca2bc0d
         path: 
     - packageId: com.unity.render-pipelines.universal@10.5.0
       testable: 0
@@ -1649,6 +1672,7 @@ m_PackageAssets:
         compatible:
         - 10.5.0
         - 10.5.1
+        - 10.6.0
         verified: 10.5.1
       dependencies:
       - name: com.unity.mathematics
@@ -1699,12 +1723,12 @@ m_PackageAssets:
         url: git+https://github.com/Unity-Technologies/Graphics.git
         revision: 7ff8fd444c179fd9bb380d61f4865be6935b47dd
         path: 
-    - packageId: com.unity.test-framework@1.1.24
+    - packageId: com.unity.test-framework@1.1.27
       testable: 0
       isDirectDependency: 1
-      version: 1.1.24
+      version: 1.1.27
       source: 1
-      resolvedPath: D:\Development\UnityC#\RTSMultiplayer\Library\PackageCache\com.unity.test-framework@1.1.24
+      resolvedPath: D:\Development\UnityC#\RTSMultiplayer\Library\PackageCache\com.unity.test-framework@1.1.27
       assetPath: Packages/com.unity.test-framework
       name: com.unity.test-framework
       displayName: Test Framework
@@ -1750,8 +1774,6 @@ m_PackageAssets:
         - 1.1.26
         - 1.1.27
         compatible:
-        - 1.1.24
-        - 1.1.26
         - 1.1.27
         verified: 1.1.27
       dependencies:
@@ -1783,13 +1805,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637505702940000000
+      datePublishedTicks: 637594751620000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: git+https://github.com/Unity-Technologies/com.unity.test-framework.git
-        revision: e6fe8892689398c0d9aba4587e0ba69edc3d82b8
+        revision: c2f2cc9b7ea61d42964257363595dff5e8c47c42
         path: 
     - packageId: com.unity.textmeshpro@3.0.6
       testable: 0
@@ -2159,12 +2181,12 @@ m_PackageAssets:
         url: 
         revision: 
         path: 
-    - packageId: com.unity.xr.legacyinputhelpers@2.1.4
+    - packageId: com.unity.xr.legacyinputhelpers@2.1.7
       testable: 0
       isDirectDependency: 1
-      version: 2.1.4
+      version: 2.1.7
       source: 1
-      resolvedPath: D:\Development\UnityC#\RTSMultiplayer\Library\PackageCache\com.unity.xr.legacyinputhelpers@2.1.4
+      resolvedPath: D:\Development\UnityC#\RTSMultiplayer\Library\PackageCache\com.unity.xr.legacyinputhelpers@2.1.7
       assetPath: Packages/com.unity.xr.legacyinputhelpers
       name: com.unity.xr.legacyinputhelpers
       displayName: XR Legacy Input Helpers
@@ -2176,7 +2198,7 @@ m_PackageAssets:
       type: 
       description: This package includes the tracked pose driver for the legacy input
         system, the XR Bindings Seeding Tool and 3Dof Arm Model support for the Tracked
-        Pose Driver. The Tracked Pose Driver is a monobehavior that enables GameObjects
+        Pose Driver. The Tracked Pose Driver is a behavior that enables GameObjects
         to track input devices, the XR Bindings Seeding Tool adds a menu item under
         the 'Assets' menu which populates the Input Asset with Unity's crossplatform
         Input Bindings
@@ -2211,8 +2233,22 @@ m_PackageAssets:
         - 2.1.7
         - 2.1.8
         verified: 2.1.8
-      dependencies: []
-      resolvedDependencies: []
+      dependencies:
+      - name: com.unity.modules.vr
+        version: 1.0.0
+      - name: com.unity.modules.xr
+        version: 1.0.0
+      resolvedDependencies:
+      - name: com.unity.modules.vr
+        version: 1.0.0
+      - name: com.unity.modules.jsonserialize
+        version: 1.0.0
+      - name: com.unity.modules.physics
+        version: 1.0.0
+      - name: com.unity.modules.xr
+        version: 1.0.0
+      - name: com.unity.modules.subsystems
+        version: 1.0.0
       keywords:
       - TPD
       - Tracked Pose Driver
@@ -2231,13 +2267,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637244797630000000
+      datePublishedTicks: 637434003470000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.xr.legacyinputhelpers.git
-        revision: 658d345b94c9a7d015f00d946ef160193439a203
+        revision: b2024928b8140a10ad43aeb5824d2f08bb8796bc
         path: 
     - packageId: com.unity.modules.ai@1.0.0
       testable: 0
@@ -4238,6 +4274,7 @@ m_PackageAssets:
         compatible:
         - 10.5.0
         - 10.5.1
+        - 10.6.0
         verified: 10.5.1
       dependencies:
       - name: com.unity.ugui
@@ -4388,6 +4425,7 @@ m_PackageAssets:
         compatible:
         - 10.5.0
         - 10.5.1
+        - 10.6.0
         verified: 10.5.1
       dependencies:
       - name: com.unity.render-pipelines.core
@@ -4602,7 +4640,6 @@ m_PackageAssets:
         - 6.0.0-pre.3
         - 6.0.0-pre.4
         compatible:
-        - 4.0.2
         - 4.0.3
         verified: 4.0.3
       dependencies:
@@ -4790,4 +4827,4 @@ m_PackageAssets:
   m_LocalPackages:
     m_LocalFileStatus: []
 m_ProjectPath: D:/Development/UnityC#/RTSMultiplayer/Packages
-m_EditorVersion: 2020.3.12f1 (b3b2c6512326)
+m_EditorVersion: 2020.3.15f2 (6cf78cb77498)

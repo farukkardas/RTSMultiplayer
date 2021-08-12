@@ -22,9 +22,11 @@ namespace Buildings
         [SerializeField] private float unitSpawnDuration = 5f;
 
         [SyncVar(hook = nameof(ClientHandleQueuedUnitsUpdated))]
-        private int queuedUnits;
+        private int _queuedUnits;
 
-        private float progressImageVelocity;
+        private float _progressImageVelocity;
+
+      
 
         private void Update()
         {
@@ -41,7 +43,7 @@ namespace Buildings
 
       
 
-        [SyncVar] private float unitTimer;
+        [SyncVar] private float _unitTimer;
 
         #region Server
 
@@ -64,13 +66,13 @@ namespace Buildings
         [Command]
         private void CmdSpawnUnit()
         {
-           if(queuedUnits == maxUnitQueue) {return;}
+         if(_queuedUnits == maxUnitQueue) {return;}
 
            RTSPlayer player = connectionToClient.identity.GetComponent<RTSPlayer>();
-           
+
            if(player.GetResources() < unitPrefab.GetResourceCost()) {return;}
 
-           queuedUnits++;
+           _queuedUnits++;
            
            player.SetResources(player.GetResources() - unitPrefab.GetResourceCost());
         }
@@ -78,11 +80,11 @@ namespace Buildings
         [Server]
         private void ProduceUnits()
         {
-           if(queuedUnits == 0) {return;}
+           if(_queuedUnits == 0) {return;}
 
-           unitTimer += Time.deltaTime;
+           _unitTimer += Time.deltaTime;
            
-           if(unitTimer < unitSpawnDuration) {return;}
+           if(_unitTimer < unitSpawnDuration) {return;}
            
            GameObject unitInstance = Instantiate(unitPrefab.gameObject, unitSpawnPoint.position, unitSpawnPoint.rotation);
 
@@ -96,8 +98,8 @@ namespace Buildings
            
            unitController.ServerMove(unitSpawnPoint.position + spawnOffset);
 
-           queuedUnits--;
-           unitTimer = 0f;
+           _queuedUnits--;
+           _unitTimer = 0f;
         }
         #endregion
 
@@ -126,7 +128,7 @@ namespace Buildings
         
         private void UpdateTimerDisplay()
         {
-            float newProgress = unitTimer / unitSpawnDuration;
+            float newProgress = _unitTimer / unitSpawnDuration;
 
             if (newProgress < unitProgressImage.fillAmount)
             {
@@ -136,7 +138,7 @@ namespace Buildings
             else
             {
                 unitProgressImage.fillAmount = Mathf.SmoothDamp(
-                    unitProgressImage.fillAmount,newProgress, ref progressImageVelocity,0.1f);
+                    unitProgressImage.fillAmount,newProgress, ref _progressImageVelocity,0.1f);
             }
         }
 

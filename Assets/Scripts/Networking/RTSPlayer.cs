@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Buildings;
 using Controller;
 using Mirror;
+using Networking;
+using TMPro;
 using UnityEngine;
 
 public class RTSPlayer : NetworkBehaviour
@@ -11,15 +13,40 @@ public class RTSPlayer : NetworkBehaviour
     [SerializeField] private LayerMask buildingBlockLayer = new LayerMask();
     [SerializeField] private Building[] buildings = new Building[0];
     [SerializeField] private float buildingRangeLimit = 5f;
+    [SerializeField] private GameObject chatUI = null;
+    [SerializeField] private TMP_Text chatText = null;
+    [SerializeField] private TMP_InputField inputField = null;
 
     private Color _teamColor = new Color();
     private List<UnitSelection> _myUnits = new List<UnitSelection>();
     private List<Building> _myBuildings = new List<Building>();
 
+    private static event Action<string> OnMessage;
+
+
     [SyncVar(hook = nameof(ClientHandleResourcesUpdated))]
     private int _gold = 100;
 
+    [SyncVar(hook = nameof(AuthorityHandlePartyOwnerStateUpdated))]
+    private bool isPartyOwner = false;
+
+    [SyncVar(hook = nameof(ClientHandleDisplayNameUpdated))]
+    private string displayName;
+
     public event Action<int> ClientOnResourcesUpdated;
+    public static event Action<bool> AuthorityOnPartyOwnerStateUpdated;
+
+    public static event Action ClientOnInfoUpdated;
+
+    public string GetDisplayName()
+    {
+        return displayName;
+    }
+
+    public bool GetIsPartyOwner()
+    {
+        return isPartyOwner;
+    }
 
     public Transform GetCameraTransform()
     {
@@ -55,6 +82,12 @@ public class RTSPlayer : NetworkBehaviour
         UnitSelection.ServerOnUnitDeSpawned += ServerHandleUnitDeSpawned;
         Building.ServerOnBuildingDeSpawned += ServerHandleBuildingSpawned;
         Building.ServerOnBuildingSpawned += ServerHandleBuildingSpawned;
+
+        chatUI.SetActive(true);
+        OnMessage += HandleNewMessage;
+
+
+        DontDestroyOnLoad(gameObject);
     }
 
     public override void OnStopServer()
@@ -139,6 +172,11 @@ public class RTSPlayer : NetworkBehaviour
         SetResources(_gold - buildingToPlace.GetPrice());
     }
 
+    [Server]
+    public void SetDisplayName(string displayName)
+    {
+        this.displayName = displayName;
+    }
 
     [Server]
     public void SetResources(int newGold)
@@ -147,9 +185,26 @@ public class RTSPlayer : NetworkBehaviour
     }
 
     [Server]
+    public void SetPartyOwner(bool state)
+    {
+        isPartyOwner = state;
+    }
+
+    [Server]
     public void SetTeamColor(Color newTeamColor)
     {
         _teamColor = newTeamColor;
+    }
+
+    [Command]
+    public void CmdStartGame()
+    {
+        if (!isPartyOwner)
+        {
+            return;
+        }
+
+        ((MyNetworkManager) NetworkManager.singleton).StartGame();
     }
 
     #endregion
@@ -163,23 +218,116 @@ public class RTSPlayer : NetworkBehaviour
             return;
         }
 
+        chatUI.SetActive(true);
+
+        OnMessage += HandleNewMessage;
+
         UnitSelection.AuthorityOnUnitSpawned += AuthorityHandleUnitSpawned;
         UnitSelection.AuthorityOnUnitDeSpawned += AuthorityHandleUnitDeSpawned;
         Building.AuthorityOnBuildingSpawned += AuthorityHandleBuildingSpawned;
         Building.AuthorityOnBuildingSpawned += AuthorityHandleBuildingDeSpawned;
     }
 
-    public override void OnStopClient()
+    [ClientCallback]
+    private void OnDestroy()
     {
-        if (!isClientOnly || !hasAuthority)
+        if (!hasAuthority)
         {
             return;
         }
+
+        OnMessage -= HandleNewMessage;
+    }
+
+    private void HandleNewMessage(string message)
+    {
+        chatText.text += message;
+    }
+
+   [Client]
+    public void Send(string message)
+    {
+        if (!Input.GetKeyDown(KeyCode.Return))
+        {
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(message))
+        {   
+            return;
+        }
+
+        CmdSendMessage(message);
+        inputField.text = string.Empty;
+    }
+
+
+    [Command]
+    private void CmdSendMessage(string message)
+    {
+        if (!hasAuthority)
+        {
+            chatUI.SetActive(false);
+        }   
+        
+        //validation rules  ( spamı burada önleyeceksin)
+        RpcHandleMessage($"[{1}]: {message}");
+    }
+
+    [ClientRpc]
+    private void RpcHandleMessage(string message)
+    {
+        OnMessage?.Invoke($"\n{message}");
+    }
+
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+
+        if (NetworkServer.active)
+        {
+            return;
+        }
+
+
+        DontDestroyOnLoad(gameObject);
+
+        ((MyNetworkManager) NetworkManager.singleton).Players.Add(this);
+    }
+
+    public override void OnStopClient()
+    {
+        ClientOnInfoUpdated?.Invoke();
+
+        if (!isClientOnly)
+        {
+            return;
+        }
+
+        ((MyNetworkManager) NetworkManager.singleton).Players.Remove(this);
+
+        if (!hasAuthority)
+        {
+            return;
+        }
+
 
         UnitSelection.ServerOnUnitSpawned -= AuthorityHandleUnitSpawned;
         UnitSelection.ServerOnUnitDeSpawned -= AuthorityHandleUnitDeSpawned;
         Building.AuthorityOnBuildingSpawned -= AuthorityHandleBuildingSpawned;
         Building.AuthorityOnBuildingSpawned -= AuthorityHandleBuildingDeSpawned;
+    }
+
+
+    private void AuthorityHandlePartyOwnerStateUpdated(bool oldState, bool newState)
+    {
+        if (!hasAuthority)
+        {
+            return;
+        }
+
+        AuthorityOnPartyOwnerStateUpdated?.Invoke(newState);
     }
 
     private void AuthorityHandleUnitSpawned(UnitSelection unitSelection)
@@ -205,6 +353,11 @@ public class RTSPlayer : NetworkBehaviour
     private void ClientHandleResourcesUpdated(int oldGold, int newGold)
     {
         ClientOnResourcesUpdated?.Invoke(newGold);
+    }
+
+    private void ClientHandleDisplayNameUpdated(string oldDisplayName, string newDisplayName)
+    {
+        ClientOnInfoUpdated?.Invoke();
     }
 
     public bool CanPlaceBuilding(BoxCollider buildingCollider, Vector3 point)
